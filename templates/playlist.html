@@ -1,0 +1,27 @@
+<h1> {{ playlist.name }} </h1>
+{% extends 'index.html' %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+
+{% if not tracks %}
+There are no tracks in this playlist! Add some <a href="{{ url_for('search_track') }}"> here. </a>
+{% endif %}
+
+{% for song in tracks %}
+<form method = 'POST' action = "{{ url_for('update',song= song.title) }}">
+<li><a href="https://www.last.fm/music/{{artist_dict[song.artist]}}/{{song.title}}">{{ song.title }}, by {{ artist_dict[song.artist] }}</a> - Rating: {{ song.rating }} {{ form.submit() }}</li>
+</form>
+</br>
+{% endfor %}
+
+<div>
+{% for message in get_flashed_messages() %}
+    <strong>{{ message }}</strong>
+{% endfor %}
+</div>
+
+{% endblock %}

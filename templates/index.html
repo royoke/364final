@@ -1,0 +1,51 @@
+{% block main_content %}
+<h1><b> Welcome to the playlist creator!</b></h1>
+
+
+{% if current_user.is_authenticated %}
+	Feel free to check out all of the feature below and start making playlists! <br><br>
+    <a href="{{ url_for('logout') }}">Sign Out {{current_user.username}}</a>
+{% else %}
+	Sign in and access tons of information about artist and songs, and create playlists with your favorite ones!
+	<br>
+	<br>
+    <a href="{{ url_for('login') }}">Sign In</a>
+    <br>
+    <br>
+    New user? <a href="{{ url_for('register') }} "> Register here</a>
+{% endif %}
+<br>
+<br>
+<button onClick="runAJAX()">Quick list of the top 10 tracks on last.fm in the US.</button>
+
+<div>
+{% for message in get_flashed_messages() %}
+<strong>*** {{ message }} ***</strong>
+{% endfor %}
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+function runAJAX () {
+	$.ajax({
+	  url: "/ajax",
+		dataType: "json"
+	}).done(function( data ) {
+			$.each(data.topsongs, function(index, value) {
+	    $("<p>"+ value.name + "</p>").appendTo($('div'))
+			});
+	  });
+	}
+</script>
+
+{% endblock %}
+
+{% block navigation %}
+<p>--------</p><br>
+Links: <br><br>
+<li><a href="{{ url_for('index') }}"> Home </a>
+<li><a href="{{ url_for('search_artist') }}"> Search for an artist </a>
+<li><a href="{{ url_for('search_track') }}"> Search for tracks and add them to your playlist! </a>
+<li><a href="{{ url_for('create_playlist') }}"> Create a playlist </a>
+<li><a href="{{ url_for('playlists') }}"> Your playlists </a>
+{% endblock %}

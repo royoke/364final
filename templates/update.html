@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+{% block main_content %}
+<form method="POST" action="/update/{{ song }}">
+	{{ form.hidden_tag() }}
+	{{form.new_rating.label }} {{ form.new_rating() }}
+	{{ form.submit() }}
+</form>
+
+<div>
+{% for message in get_flashed_messages() %}
+{{ message }}
+{% endfor %}
+</div>
+
+{% endblock %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}

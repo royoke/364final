@@ -1,0 +1,33 @@
+<h1>My playlists</h1>
+
+{% extends 'index.html' %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+
+{% if not playlists %}
+There are no playlists to show.
+
+{% else %}
+
+<ul>
+{% for p in playlists %}
+<form method="POST" action = "{{ url_for('delete_playlist',lst=p.name) }}">
+    <li>
+    	<a href="http://localhost:5000/playlists/{{ p.id }}">{{ p.name }}</a>   {{ form.submit() }}
+    </li>
+</form>
+{% endfor %}
+</ul>
+{% endif %}
+
+<div>
+{% for message in get_flashed_messages() %}
+<strong>*** {{ message }} ***</strong>
+{% endfor %}
+</div>
+
+{% endblock %}

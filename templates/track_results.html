@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% block main_content %}
+
+<h1> Results for {{results[1]}}, by {{results[2]}} </h1>
+
+<iframe src={{ results[3] }} width="300" height="300" frameBorder="0" ></iframe>
+<br>
+<b> Summary: </b>
+{{ results[0] }} <a href="https://www.last.fm/music/{{results[2]}}/{{results[1]}}"> here. </a><br><br>
+
+Love this song? <a href="http://localhost:5000/add_track/{{results[2]}}/{{results[1]}}"> Add it to a playlist! </a>
+
+{% endblock %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}

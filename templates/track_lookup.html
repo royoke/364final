@@ -1,0 +1,22 @@
+<h1> Welcome to the track finder! </h1>
+{% extends 'index.html' %}
+{% block main_content %}
+
+<form action = "{{ url_for('search_track') }}" method = 'POST'>
+{{form.hidden_tag()}}
+{{form.track.label}}{{form.track()}}<br>
+{{form.artist.label}}{{form.artist()}}<br>
+{{form.submit()}}
+</form>
+
+<div>
+{% for message in get_flashed_messages() %}
+<strong>*** {{ message }} ***</strong>
+{% endfor %}
+</div>
+
+{% endblock %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}

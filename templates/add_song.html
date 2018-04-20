@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% block main_content %}
+
+{% if not form.playlist_pick.choices %}
+You have no playlists to add this song to. Try <a href="{{url_for('create_playlist')}}"> creating a playlist </a> then try again
+
+{% else %}
+<form action = '' method="POST">
+{{ form.hidden_tag() }}
+{{ form.playlist_pick.label }}{{ form.playlist_pick() }} <br>
+{{ form.rating.label }}{{ form.rating() }}<br>
+{{ form.submit() }}
+</form>
+
+{% endif %}
+<div>
+{% for message in get_flashed_messages() %}
+    <strong>{{ message }}</strong>
+{% endfor %}
+</div>
+
+{% endblock %}

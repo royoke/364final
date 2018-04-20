@@ -1,0 +1,20 @@
+<h1> Welcome to the artist finder! </h1>
+{% extends 'index.html' %}
+{% block main_content %}
+
+<form action = "{{url_for('artist_result')}}" method="GET">
+	{{ form.artist.label }}{{ form.artist() }}  <br>
+	{{ form.submit() }}
+</form>
+
+<div>
+{% for message in get_flashed_messages() %}
+<strong>*** {{ message }} ***</strong>
+{% endfor %}
+</div>
+
+{% endblock %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}

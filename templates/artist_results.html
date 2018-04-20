@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+{% block main_content %}
+<h1> Results for {{results[1]}} </h1>
+
+<iframe src={{ results[2] }} width="300" height="300" frameBorder="0" ></iframe>
+<br>
+<b>Summary:</b>
+{{ results[0] }} <a href="https://www.last.fm/music/{{results[1]}}"> here. </a>
+<br><br>
+Related Artists: <br>
+<ul>
+{% for artist in results[3] %}
+	<li><a href="https://www.last.fm/music/{{artist}}"> {{artist}} </a></li><br>
+{% endfor %}
+</ul>
+
+{% endblock %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}
