@@ -22,6 +22,7 @@ The only module that I used that was not consitently used in class was regular e
 /update/<song> -> update.html 
 
 **Requirements**
+
 **Ensure that your SI364final.py file has all the setup (app.config values, import statements, code to run the app if that file is run, etc) necessary to run the Flask application, and the application runs correctly on http://localhost:5000 (and the other routes you set up). Your main file must be called SI364final.py, but of course you may include other files if you need.** 
 
 **A user should be able to load http://localhost:5000 and see the first page they ought to see on the application.**
@@ -83,6 +84,7 @@ The only module that I used that was not consitently used in class was regular e
 **Have at least 5 view functions that are not included with the code we have provided. (But you may have more! Make sure you include ALL view functions in the app in the documentation and navigation as instructed above.)**
 
 **Extra reqs**
+
 **(100 points) Include a use of an AJAX request in your application that accesses and displays useful (for use of your application) data.**
 
 (100 points) Create, run, and commit at least one migration.
